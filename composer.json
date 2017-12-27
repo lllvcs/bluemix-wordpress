@@ -48,11 +48,11 @@
         "wpackagist-plugin/wp-super-cache"            : "*",
         "wpackagist-theme/twentyfourteen"             : "*",
         "wpackagist-theme/twentyfifteen"             : "*",
-        "wpackagist-theme/twentysixteen"               : "*"
-	"wpackagist-theme/Hestia"               : "*"
-	"wpackagist-theme/Zerif Lite"               : "*"
-	"wpackagist-theme/Sydney"               : "*"
-	"wpackagist-theme/Shapely"               : "*"
+        "wpackagist-theme/twentysixteen"               : "*",
+        "wpackagist-theme/Hestia"               : "*",
+        "wpackagist-theme/Zerif Lite"               : "*",
+        "wpackagist-theme/Sydney"               : "*",
+        "wpackagist-theme/Shapely"               : "*"
     },
 
     "extra": {
