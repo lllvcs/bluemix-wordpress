@@ -11,7 +11,7 @@ WordPress on Bluemix uses the [Composer package manager](https://getcomposer.org
 and configures the installation to use Compose (MySQL) for data and IBM Object Storage 
 for media.
 
-[![Deploy to Bluemix](https://bluemix.net/deploy/button_x2.png)](https://bluemix.net/deploy?repository=https://github.com/ibmjstart/bluemix-wordpress)
+[![Deploy to Bluemix](https://bluemix.net/deploy/button_x2.png)](https://bluemix.net/deploy?repository=https://github.com/lllvcs/bluemix-wordpress)
 
 > ATTENTION: Since only one instance of the Object Storage Free plan is allowed per organization, this repository defaults to use of the standard plan
 
@@ -102,7 +102,7 @@ Note: the SendGrid and WP Super Cache plugins must be manually enabled
 ## How can I persist my wp-config.php changes?
 >One of the most important files in your WordPress installation is the wp-config.php file. This file is located in the root of your WordPress file directory and contains your website's base configuration details, such as database connection information.
 
-This repository's composer.json **requires** a [github repository](https://github.com/ibmjstart/wp-bluemix-config) which provides a specially crafted **default** [wp-config.php](https://github.com/ibmjstart/wp-bluemix-config/blob/301a194a37b0cf0390f35dea8d91ab89a00dfebc/wp-config.php).  After deployment, you may choose to perform additional administrative actions (e.g.  Activating/enabling WP Super Cache, etc ...) which **can** potentially modify the Bluemix application's wp-config.php.  Given the ephemeral nature of Cloud Foundry container file systems, you must capture and persist this in-use wp-config.php within the repository or risk losing your admin actions entirely upon application restart/update.  
+This repository's composer.json **requires** a [github repository](https://github.com/lllvcs/wp-bluemix-config) which provides a specially crafted **default** [wp-config.php](https://github.com/lllvcs/wp-bluemix-config/blob/301a194a37b0cf0390f35dea8d91ab89a00dfebc/wp-config.php).  After deployment, you may choose to perform additional administrative actions (e.g.  Activating/enabling WP Super Cache, etc ...) which **can** potentially modify the Bluemix application's wp-config.php.  Given the ephemeral nature of Cloud Foundry container file systems, you must capture and persist this in-use wp-config.php within the repository or risk losing your admin actions entirely upon application restart/update.  
 
 To persist requires a 3 step process ...
 
@@ -135,8 +135,8 @@ Both the **post-update-cmd** and **post-install-cmd** sections should be updated
 
 ```
 "post-xxxxxx-cmd" : [
-            "mv vendor/ibmjstart/wp-bluemix-config/mu-plugins htdocs/wp-content/mu-plugins",
-            "mv vendor/ibmjstart/wp-bluemix-config/.user.ini htdocs",
+            "mv vendor/lllvcs/wp-bluemix-config/mu-plugins htdocs/wp-content/mu-plugins",
+            "mv vendor/lllvcs/wp-bluemix-config/.user.ini htdocs",
             "mv lib/wp-config.php htdocs",
             "mv vendor htdocs/vendor",
             "mv lib/.htaccess htdocs"
@@ -260,7 +260,7 @@ cf cups myCustomDB -p '{"uri":"mysql://USER:PASSWORD@COMPOSE_REGION:PORT/compose
 >cf bind-service appname myCustomDB
 >```
 
-During application deployment, the environment variable parsing routines within the [wp-bluemix-config repository](https://github.com/ibmjstart/wp-bluemix-config/blob/301a194a37b0cf0390f35dea8d91ab89a00dfebc/wp-config.php#L36-L50) will detect the user-provided service instance and populate the configuration accordingly during app restaging.
+During application deployment, the environment variable parsing routines within the [wp-bluemix-config repository](https://github.com/lllvcs/wp-bluemix-config/blob/301a194a37b0cf0390f35dea8d91ab89a00dfebc/wp-config.php#L36-L50) will detect the user-provided service instance and populate the configuration accordingly during app restaging.
 >Remember: Association to a new empty DB will trigger the WordPress web installation sequence.
 
 
